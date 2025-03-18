@@ -1,0 +1,52 @@
+[
+  ["1","Home","/","Seja Bem Vindo",[],0],
+  ["2","Eventos","/eventos"," Eventos",
+        [
+          ["2.1","Próximos","/eventos/proximos","Próximos Eventos",0],
+          ["2.2","Nacionais","/eventos/nacionais","Eventos Nacionais",0],
+          ["2.3","Internacionais","/eventos/internacionais","Eventos Internacionais",0],
+          ["2.4","Culturais","/eventos/proximos","Eventos Culturais",0]
+        ],0
+  ],
+  ["3","Repertório","/repertorio"," Repertório",
+      [
+        ["3.1","Músicas Racionais","/repertorio/racionais","Músicas Racionais",0],
+        ["3.2","Dobrados","/repertorio/dobrados","Dobrados",0],
+        ["3.3","Hinos","/repertorio/hinos","Hinos",0],
+        ["3.4","Toques","/repertorio/toques","Toque de Fanfarra",0],
+        ["3.5","Diversas","/repertorio/culturais","Músicas Diversas",0],
+        ["3.6","RJB","/repertorio/rjb","Músicas da Racional Jazz Band",0]
+      ],0
+  ],
+  ["4","Música","/musica"," Material de Música",
+      [
+        ["4.1","Teoria Musical","/musica/teoria_musical","Material de Teoria Musical",0],
+        ["4.2","Regência","/musica/regencia","Material de Regência",0],
+        ["4.3","Harmonia","/musica/harmonia","Material de Harmonia",0],
+        ["4.4","Tabela de Digitação","/musica/digitacao","Digitação de Instrumentos",0],
+        ["4.5","Divisão Rítmica","/musica/divisao","Métodos para Divisão Rítmica Jazz Band",0],
+        ["4.6","Solfejo","/musica/solfejo","Métodos de Solfejo",0],
+        ["4.7","Métodos para Sôpro","/musica/sopro","Métodos para Sôpro",0],
+        ["4.8","Métodos para Percussão","/musica/percussao","Métodos para Percussão",0],
+        ["4.9","Vídeo Aulas","/musica/video_aulas","Vídeo Aulas",0],
+        ["4.10","Provas","/musica/provas","Testes e Provas",0]
+      ],0
+  ],
+  ["5","Administração","/administracao","Administração do Site",
+      [
+        ["5.1","Bandas","/administracao/bandas","Administração de Bandas",1],
+        ["5.2","Eventos","/administracao/eventos","Administração de Eventos",2],
+        ["5.3","Repertório","/administracao/repertorio","Administração de Repertório",1],
+        ["5.4","Componentes","/administracao/componentes","Administração de Componentes",2],
+        ["5.5","Instrumentos","/administracao/instrumentos","Administração de Instrumentos",1],
+        ["5.6","Usuários","/administracao/usuarios","Administração de Usuários",1],
+        ["5.7","Relatórios","/administracao/relatorios","Geração de Relatórios",2],
+        ["5.8","Configuração","/administracao/configuracao","Configuração do Site",1]
+      ]
+  ],
+  ["6","Sobre","/sobre","Sobre a BUR",[],0],
+  ["7","Contato","/contato","Contato com a BUR",[],0],
+  ["8","Login","/login","Página de Login",[],0],
+  ["9","Home","/","Página Principal",[],0]
+]
+  

@@ -1,0 +1,3 @@
+<template>
+    Lado Direito
+</template>

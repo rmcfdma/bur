@@ -1,0 +1,8 @@
+:root {
+    /* forest green #2B9348, bright green #55A630, lime green #80B918, warm yellow #E9C46A */
+    --1: #2B9348; /*forest green*/
+    --2: #55A630; /*bright green */
+    --3: #80B918; /*lime green */
+    --4: #E9C46A; /*warm yellow */
+    --width-banner: 130px;
+  }

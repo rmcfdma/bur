@@ -1,0 +1,82 @@
+@import '@/assets/css/constants.css';
+
+@font-face {
+	font-family: 'quicksand';
+	src: url('assets/fonts/Quicksand/static/Quicksand-Medium.ttf') format('truetype');
+}
+
+.grid {
+	display: grid;
+	width: 95%;
+	margin: 0 auto;
+	/*Centraliza*/
+}
+
+.grid-template {
+	grid-template:
+		"logo banner banner banner" 130px
+		"logo nav nav user" 50px
+		"space space space space" 10px
+		"sidenav content content advert" 1fr
+		"footer footer footer footer" 100px
+		/ 200px 1fr 1fr 180px;
+}
+
+.logo {
+	grid-area: logo;
+}
+
+.banner {
+	grid-area: banner;
+}
+
+.nav {
+	grid-area: nav;
+}
+
+.space {
+	grid-area: space;
+}
+
+.user {
+	grid-area: user;
+}
+
+.content {
+	grid-area: content;
+	min-height: 600px;
+}
+
+.sidenav {
+	grid-area: sidenav;
+	background-color: burlywood;
+}
+
+.advert {
+	grid-area: advert;
+	background-color: violet;
+}
+
+.footer {
+	grid-area: footer;
+	background-color: rgb(255, 242, 0);
+}
+
+ .item {
+	/* background: tomato;
+	font-size: 1.5em; */ 
+	text-align: center;
+} 
+
+.gap {
+	gap: 5px
+}
+
+.spacer {
+	height: 50px;
+}
+
+body {
+	/* font-family: 'quicksand'; */
+	margin: 10px;
+}

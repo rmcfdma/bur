@@ -1,0 +1,12 @@
+{
+    "usuarios": [
+      { "id": 1, "username": "rodrigo", "password": "66416641", "tipo_usuarios": 1 },
+      { "id": 2, "username": "manoela", "password": "22062015", "tipo_usuarios": 2 },
+      { "id": 3, "username": "dalva", "password": "26112003", "tipo_usuarios": 3 }
+    ],
+    "tipo_usuarios": [
+      { "id": 1, "tipo": "administrador" },
+      { "id": 2, "tipo": "presidente" },
+      { "id": 3, "tipo": "maestro" }
+    ]
+}

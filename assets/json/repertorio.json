@@ -1,0 +1,114 @@
+[
+    {
+        "id": "racionais",
+        "label": "Músicas Racionais",
+        "children": [
+            {
+                "id": "r001",
+                "label": "R-01 Apoteose Racional",
+                "isVisible": true,
+                "children": [
+                    {
+                        "id": "r001clarineta",
+                        "label": "Clarineta",
+                        "children": [
+                            {
+                                "id": "r001clarineta1",
+                                "label": "1ª Clarineta"
+                            },
+                            {
+                                "id": "r001clarineta2",
+                                "label": "2ª Clarineta"
+                            },
+                            {
+                                "id": "r001clarineta3",
+                                "label": "3ª Clarineta"
+                            },
+                            {
+                                "id": "r001clarineta4",
+                                "label": "4ª Clarineta"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "dobrados",
+        "label": "Dobrados",
+        "children": [
+            {
+                "id": "d001",
+                "label": "D-01 Canção do Soldado",
+                "isVisible": true,
+                "children": [
+                    {
+                        "id": "d001grade",
+                        "label": "Grade"
+                    },
+                    {
+                        "id": "d001regencia",
+                        "label": "Regência"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "id": "hinos",
+        "label": "Hinos",
+        "children": [
+            {
+                "id": "h001",
+                "label": "Hino Nacional Brasileiro"
+            },
+            {
+                "id": "h002",
+                "label": "Hino à Bandeira"
+            }
+        ]
+    },
+    {
+        "id": "toques",
+        "label": "Toques de Fanfarra",
+        "children": [
+            {
+                "id": "t001",
+                "label": "Toque 1"
+            },
+            {
+                "id": "t002",
+                "label": "Toque 2"
+            }
+        ]
+    },
+    {
+        "id": "diversas",
+        "label": "Músicas Diversas",
+        "children": [
+            {
+                "id": "d001",
+                "label": "Canção do Soldado"
+            },
+            {
+                "id": "d002",
+                "label": "Cidade Maravilhosa"
+            }
+        ]
+    },
+    {
+        "id": "rjb",
+        "label": "Racional Jazz Band",
+        "children": [
+            {
+                "id": "rjb001",
+                "label": "Wind of Change"
+            },
+            {
+                "id": "rjb002",
+                "label": "Ainda Bem"
+            }
+        ]
+    }
+]
