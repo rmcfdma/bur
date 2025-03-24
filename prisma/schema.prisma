@@ -1,0 +1,180 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("AWS_RDS_DB_URL")
+}
+
+model bruds {
+  ID_BRUDS      Int             @id @default(autoincrement())
+  NOME          String          @db.VarChar(45)
+  ESTADO        String          @db.VarChar(45)
+  CIDADE        String          @db.VarChar(45)
+  ID_BUR        Int
+  bur           bur             @relation(fields: [ID_BUR], references: [ID_BUR], map: "FK_BRUDS_BUR")
+  componentes   componentes[]
+  participacoes participacoes[]
+  patrimonio    patrimonio[]
+
+  @@index([ID_BUR], map: "INDEX_FK_BRUDS_BUR")
+}
+
+model bur {
+  ID_BUR  Int       @id
+  NOME    String    @db.VarChar(45)
+  CNPJ    String    @db.VarChar(45)
+  LOGO    String?   @db.VarChar(45)
+  bruds   bruds[]
+  musicas musicas[]
+}
+
+model componentes {
+  ID_COMPONENTES      Int                   @id @default(autoincrement())
+  NOME                String                @db.VarChar(45)
+  CPF                 String                @unique(map: "CPF_UNIQUE") @db.VarChar(45)
+  DATA_NASCIMENTO     DateTime              @db.Date
+  LOGRADOURO          String                @db.VarChar(45)
+  NUMERO              String                @db.VarChar(45)
+  BAIRRO              String                @db.VarChar(45)
+  CIDADE              String                @db.VarChar(45)
+  ESTADO              String                @db.VarChar(2)
+  CEP                 String?               @db.VarChar(8)
+  TELEFONE            String                @db.VarChar(12)
+  EMAIL               String?               @unique(map: "EMAIL_UNIQUE") @db.VarChar(45)
+  FOTO                String?               @unique(map: "FOTO_UNIQUE") @db.VarChar(100)
+  TEFA                String                @unique(map: "TEFA_UNIQUE") @db.VarChar(15)
+  DATA_INCLUSAO       DateTime              @db.Date
+  ID_BRUDS            Int
+  bruds               bruds                 @relation(fields: [ID_BRUDS], references: [ID_BRUDS], map: "FK_COMPONENTES_BRUDS")
+  emprestimos         emprestimos[]
+  funcoes_componentes funcoes_componentes[]
+  usuarios            usuarios?
+
+  @@index([ID_BRUDS], map: "INDEX_FK_COMPONENTES_BRUDS")
+}
+
+model emprestimos {
+  ID_PATRIMONIO  Int
+  ID_COMPONENTES Int
+  DATA_INICIO    DateTime    @db.Date
+  DATA_FIM       DateTime?   @db.Date
+  ACESSORIOS     String?     @db.VarChar(45)
+  OBSERVACAO     String?     @db.VarChar(45)
+  componentes    componentes @relation(fields: [ID_COMPONENTES], references: [ID_COMPONENTES], map: "FK_EMPRESTIMOS_COMPONENTES")
+  patrimonio     patrimonio  @relation(fields: [ID_PATRIMONIO], references: [ID_PATRIMONIO], map: "FK_EMPRESTIMOS_PATRIMONIO")
+
+  @@id([ID_PATRIMONIO, ID_COMPONENTES, DATA_INICIO])
+  @@index([ID_COMPONENTES], map: "INDEX_FK_EMPRESTIMOS_COMPONENTES")
+  @@index([ID_PATRIMONIO], map: "INDEX_FK_EMPRESTIMOS_INSTRUMENTOS")
+}
+
+model eventos {
+  ID_EVENTOS    Int             @id
+  DATA_INICIO   DateTime        @db.Date
+  DATA_FIM      DateTime        @db.Date
+  ESTADO        String          @db.VarChar(2)
+  CIDADE        String          @db.VarChar(45)
+  DESCRICAO     String          @db.LongText
+  fotos         fotos?
+  participacoes participacoes[]
+}
+
+model fotos {
+  ID_EVENTOS Int     @id
+  URL        String  @unique(map: "URL_UNIQUE") @db.VarChar(100)
+  DESCRICAO  String  @db.LongText
+  eventos    eventos @relation(fields: [ID_EVENTOS], references: [ID_EVENTOS], map: "FK_FOTOS_EVENTOS")
+}
+
+model funcoes {
+  ID_FUNCOES          Int                   @id @default(autoincrement())
+  FUNCAO              String                @unique(map: "FUNCAO_UNIQUE") @db.VarChar(45)
+  funcoes_componentes funcoes_componentes[]
+}
+
+model funcoes_componentes {
+  ID_FUNCOES     Int
+  ID_COMPONENTES Int
+  DATA_INICIO    DateTime?   @db.Date
+  componentes    componentes @relation(fields: [ID_COMPONENTES], references: [ID_COMPONENTES], map: "FK_FUNCOES_COMPONENTES_COMPONENTES")
+  funcoes        funcoes     @relation(fields: [ID_FUNCOES], references: [ID_FUNCOES], map: "FK_FUNCOES_COMPONENTES_FUNCOES")
+
+  @@id([ID_FUNCOES, ID_COMPONENTES])
+  @@index([ID_COMPONENTES], map: "INDEX_FK_FUNCOES_COMPONENTES_COMPONENTES")
+  @@index([ID_FUNCOES], map: "INDEX_FK_FUNCOES_COMPONENTES_FUNCOES")
+}
+
+model musicas {
+  ID_MUSICAS      Int          @id @default(autoincrement())
+  TITULO          String       @unique(map: "TITULO_UNIQUE") @db.VarChar(45)
+  SUBTITULO       String?      @db.VarChar(45)
+  AUTOR           String?      @db.VarChar(45)
+  ARRANJO         String?      @db.VarChar(45)
+  DATA_INCLUSAO   DateTime     @db.Date
+  ID_TIPOS_MUSICA Int
+  ID_BUR          Int
+  bur             bur          @relation(fields: [ID_BUR], references: [ID_BUR], map: "FK_MUSICAS_BUR")
+  tipos_musica    tipos_musica @relation(fields: [ID_TIPOS_MUSICA], references: [ID_TIPOS_MUSICA], map: "FK_MUSICAS_TIPOS_MUSICA")
+
+  @@index([ID_BUR], map: "INDEX_FK_MUSICAS_BUR")
+  @@index([ID_TIPOS_MUSICA], map: "INDEX_FK_MUSICAS_TIPO_MUSICA")
+}
+
+model participacoes {
+  ID_EVENTOS      Int
+  ID_BRUDS        Int
+  QTD_COMPONENTES Int
+  bruds           bruds   @relation(fields: [ID_BRUDS], references: [ID_BRUDS], map: "FK_PARTICIPACOES_BRUDS")
+  eventos         eventos @relation(fields: [ID_EVENTOS], references: [ID_EVENTOS], map: "FK_PARTICIPACOES_EVENTOS")
+
+  @@id([ID_EVENTOS, ID_BRUDS])
+  @@index([ID_BRUDS], map: "INDEX_FK_PARTICIPACOES_BRUDS")
+  @@index([ID_EVENTOS], map: "INDEX_FK_PARTICIPACOES_EVENTOS")
+}
+
+model patrimonio {
+  ID_PATRIMONIO       Int              @id @default(autoincrement())
+  ID_TIPOS_PADRIMONIO Int
+  DATA_INCLUSAO       DateTime         @db.Date
+  DATA_EXCLUSAO       DateTime?        @db.Date
+  OBSERVACAO          String?          @db.VarChar(150)
+  DESCRICAO           String?          @db.VarChar(150)
+  MARCA               String           @db.VarChar(45)
+  ID_BRUDS            Int
+  NUM_SERIE           String?          @unique(map: "NUM_SERIE_UNIQUE") @db.VarChar(45)
+  ACESSORIOS          String?          @db.LongText
+  NOME                String           @unique(map: "NOME_UNIQUE") @db.VarChar(45)
+  emprestimos         emprestimos[]
+  bruds               bruds            @relation(fields: [ID_BRUDS], references: [ID_BRUDS], map: "FK_PATRIMONIO_BRUDS")
+  tipos_patrimonio    tipos_patrimonio @relation(fields: [ID_TIPOS_PADRIMONIO], references: [ID_TIPO_PATRIMONIO], map: "FK_PATRIMONIO_TIPOS_PATRIMONIO")
+
+  @@index([ID_BRUDS], map: "INDEX_FK_INSTRUMENTOS_BRUDS_INDEX")
+  @@index([ID_TIPOS_PADRIMONIO], map: "INDEX_FK_INSTRUMENTOS_TIPOS_INSTRUMENTO")
+}
+
+model tipos_musica {
+  ID_TIPOS_MUSICA Int       @id @default(autoincrement())
+  TIPO            String    @unique(map: "TIPO_UNIQUE") @db.VarChar(45)
+  musicas         musicas[]
+}
+
+model tipos_patrimonio {
+  ID_TIPO_PATRIMONIO Int          @id @default(autoincrement())
+  TIPO               String?      @unique(map: "TIPO_UNIQUE") @db.VarChar(45)
+  DESCRICAO          String?      @db.VarChar(150)
+  patrimonio         patrimonio[]
+}
+
+model usuarios {
+  ID_USUARIOS    Int         @id @default(autoincrement())
+  USERNAME       String      @unique(map: "USERNAME_UNIQUE") @db.VarChar(45)
+  PASSWORD       String      @db.VarChar(45)
+  DATA_INCLUSAO  DateTime    @db.Date
+  DATA_EXCLUSAO  DateTime?   @db.Date
+  ID_COMPONENTES Int         @unique(map: "ID_COMPONENTES_UNIQUE")
+  componentes    componentes @relation(fields: [ID_COMPONENTES], references: [ID_COMPONENTES], onDelete: Cascade, map: "FK_USUARIOS_COMPONENTES")
+
+  @@index([ID_COMPONENTES], map: "INDEX_FK_USUARIOS_COMPONENTES")
+}

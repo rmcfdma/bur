@@ -10,15 +10,27 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.772.0",
     "@casl/ability": "^6.7.3",
     "@element-plus/icons-vue": "^2.3.1",
     "@element-plus/nuxt": "^1.1.1",
     "@nuxt/telemetry": "^2.6.5",
     "@pinia/nuxt": "^0.10.1",
+    "@prisma/client": "^6.5.0",
+    "aws-sdk": "^2.1692.0",
+    "axios": "^1.8.4",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
     "element-plus": "^2.9.6",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.2",
     "nuxt": "^3.16.0",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
     "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "prisma": "^6.5.0"
   }
 }
