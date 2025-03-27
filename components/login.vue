@@ -66,49 +66,41 @@ const rules = reactive<FormRules<RuleForm>>({
 
 const login = async (formEl: FormInstance | undefined) => {
 
-    try {
-        const resposta = await $usuarioService.getUsuariosCount()
-    } catch {
+    if (!formEl) return
+    const loading = ElLoading.service({
+        lock: true,
+        text: 'Efetuando login.',
+        background: 'rgba(0, 0, 0, 0.7)',
+    });
+    await formEl.validate(async (valid, fields) => {
+        if (valid) {
+            try {
+                const resposta = await $usuarioService.authenticate(form.username, form.password)
+                if (resposta.accessToken && resposta.refreshToken) {
+                    store.setTokensInPinia(resposta.accessToken, resposta.refreshToken)
+                    setBreadcrumbs([['1', 'Home', '/', 'Seja Bem Vindo']]);
+                    await router.push('/')//Redireciona para Home
+                } else {
+                    store.clearTokensInPinia()
+                    setBreadcrumbs([['8', 'login', '/login', 'Página de Login']]);
+                    await router.push('/login')
+                }
+                ElMessage({ message: "Login efetuado com sucesso.", type: 'success' })
+            } catch (error: any) {
 
-    }
-
-
-
-    // if (!formEl) return
-    // const loading = ElLoading.service({
-    //     lock: true,
-    //     text: 'Efetuando login.',
-    //     background: 'rgba(0, 0, 0, 0.7)',
-    // });
-    // await formEl.validate(async (valid, fields) => {
-    //     if (valid) {
-    //         // try {
-    //         //     const resposta = await $usuarioService.authenticate(form.username, form.password)
-    //         //     if (resposta.accessToken && resposta.refreshToken) {
-    //         //         store.setTokensInPinia(resposta.accessToken, resposta.refreshToken)
-    //         //         setBreadcrumbs([['1', 'Home', '/', 'Seja Bem Vindo']]);
-    //         //         await router.push('/')//Redireciona para Home
-    //         //     } else {
-    //         //         store.clearTokensInPinia()
-    //         //         setBreadcrumbs([['8', 'login', '/login', 'Página de Login']]);
-    //         //         await router.push('/login')
-    //         //     }
-    //         //     ElMessage({ message: "Login efetuado com sucesso.", type: 'success' })
-    //         // } catch (error: any) {
-
-    //         //     if (error.response){
-    //         //         console.log(error.response.status)
-    //         //         if (error.response.status === 401) {
-    //         //             ElMessage({ message: "Senha ou usuário incorreto.", type: 'error' })
-    //         //         } else if (error.response.status === 500) {
-    //         //             //ElMessage({ message: "Sem conexão com o Banco de Dados.", type: 'error' })
-    //         //         }
-    //         // } 
-    //         // }
-    //     } else {
-    //         ElMessage({ message: "Preencha o formulário corretamente.", type: 'error' })
-    //     }    })
-    // loading.close()
+                if (error.response){
+                    console.log(error.response.status)
+                    if (error.response.status === 401) {
+                        ElMessage({ message: "Senha ou usuário incorreto.", type: 'error' })
+                    } else if (error.response.status === 500) {
+                        //ElMessage({ message: "Sem conexão com o Banco de Dados.", type: 'error' })
+                    }
+            } 
+            }
+        } else {
+            ElMessage({ message: "Preencha o formulário corretamente.", type: 'error' })
+        }    })
+    loading.close()
 }
 
 </script>
