@@ -46,7 +46,7 @@ usuariosRoutes.put('/:id', controller.alterar);
 usuariosRoutes.get('/', controller.getAllUsuarios);
 
 // Rota para efetuar login
-//usuariosRoutes.post('/login', controller.login);
+usuariosRoutes.post('/login', controller.login);
 
 // Rota para buscar um usuário por ID
 usuariosRoutes.get('/id/:id_usuarios', controller.getUsuariosById);
