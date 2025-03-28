@@ -68,7 +68,7 @@ export const getUsuariosByPage = async (req, res) => {
   res.json(usuarios);
 };
 
-export const login = async (req, res) => {
+//export const login = async (req, res) => {
   // const { username, password } = req.body.data;
   // try {
   //   const usuario = await prisma.usuarios.findMany({
@@ -98,7 +98,7 @@ export const login = async (req, res) => {
   // } finally {
   //   await prisma.$disconnect();
   // }
-};
+//};
 
 export const novo = async (req, res) => {
   const { usuario } = req.body;
