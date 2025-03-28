@@ -67,3 +67,4 @@ usuariosRoutes.get('/componente/:id_componente', controller.getUsuarioByIdCompon
 
 usuariosRoutes.get('/componentes/:nome', controller.getUsuarioByNomeComponente)
 
+export default usuariosRoutes; // Exporte o router para ser usado em index.js
