@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.get('/api', (req, res) => res.send('Express on Vercel'));
-app.use('/api/usuarios', usuariosRoutes);
+//app.use('/api/usuarios', usuariosRoutes);
 
 //app.listen(3000, () => console.log('Server ready on port 3000.'));
 
