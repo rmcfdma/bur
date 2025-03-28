@@ -61,7 +61,7 @@ usuariosRoutes.post('/pagination', controller.getUsuariosByPage);
 // Rota para buscar o total de usuários
 usuariosRoutes.get('/count', controller.getUsuariosCount);
 
-usuariosRoutes.post('/refresh-token', controller.getRefreshToken)
+//usuariosRoutes.post('/refresh-token', controller.getRefreshToken)
 
 usuariosRoutes.get('/componente/:id_componente', controller.getUsuarioByIdComponente)
 
