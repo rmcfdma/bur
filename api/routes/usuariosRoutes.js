@@ -1,7 +1,7 @@
 import express from "express"
 import * as controller from '../controllers/usuariosController.js';
 //import jwt from "jsonwebtoken"
-export const usuariosRoutes = express.Router();
+const usuariosRoutes = express.Router();
 
 // const validateAccessToken = (req, res, next) => {
 //   //console.log("A Authorization é: " + req.headers.authorization)
