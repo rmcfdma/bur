@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/api/usuarios', (req, res) => res.send('Entrei em /api/usuarios'));
+app.get('/api/usuarios', (req, res) => res.send('Entrei em /api/usuarios 2'));
 //app.get('/api', (req, res) => res.send('Entrei em /api'));
 
 
