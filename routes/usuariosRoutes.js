@@ -30,41 +30,41 @@ const usuariosRoutes = express.Router();
 //   res.status(401).send('Acesso negado');
 // }
 
-// // Rota para criar um novo usuário
-// usuariosRoutes.post('/', controller.novo);
+// Rota para criar um novo usuário
+usuariosRoutes.post('/', controller.novo);
 
-// // Rota para deletar usuário
-// usuariosRoutes.delete('/', controller.removeAll);
+// Rota para deletar usuário
+usuariosRoutes.delete('/', controller.removeAll);
 
-// // Rota para deletar usuário
-// usuariosRoutes.delete('/:id', controller.remove);
+// Rota para deletar usuário
+usuariosRoutes.delete('/:id', controller.remove);
 
-// // Rota para update usuário
-// usuariosRoutes.put('/:id', controller.alterar);
+// Rota para update usuário
+usuariosRoutes.put('/:id', controller.alterar);
 
 // Rota para listar todos os usuários
 usuariosRoutes.get('/', controller.getAllUsuarios);
 
-// // Rota para efetuar login
-// usuariosRoutes.post('/login', controller.login);
+// Rota para efetuar login
+usuariosRoutes.post('/login', controller.login);
 
-// // Rota para buscar um usuário por ID
-// usuariosRoutes.get('/id/:id_usuarios', controller.getUsuariosById);
+// Rota para buscar um usuário por ID
+usuariosRoutes.get('/id/:id_usuarios', controller.getUsuariosById);
 
-// // Rota para buscar um usuário por USENAME
-// usuariosRoutes.get('/username/:username', controller.getUsuarioByUsername);
+// Rota para buscar um usuário por USENAME
+usuariosRoutes.get('/username/:username', controller.getUsuarioByUsername);
 
-// // Rota para buscar por paginação
-// //expressjwt({secret: "fabiane", algorithms: ["HS256"]})
-// usuariosRoutes.post('/pagination', controller.getUsuariosByPage);
+// Rota para buscar por paginação
+//expressjwt({secret: "fabiane", algorithms: ["HS256"]})
+usuariosRoutes.post('/pagination', controller.getUsuariosByPage);
 
-// // Rota para buscar o total de usuários
-// usuariosRoutes.get('/count', controller.getUsuariosCount);
+// Rota para buscar o total de usuários
+usuariosRoutes.get('/count', controller.getUsuariosCount);
 
-// //usuariosRoutes.post('/refresh-token', controller.getRefreshToken)
+//usuariosRoutes.post('/refresh-token', controller.getRefreshToken)
 
-// usuariosRoutes.get('/componente/:id_componente', controller.getUsuarioByIdComponente)
+usuariosRoutes.get('/componente/:id_componente', controller.getUsuarioByIdComponente)
 
-// usuariosRoutes.get('/componentes/:nome', controller.getUsuarioByNomeComponente)
+usuariosRoutes.get('/componentes/:nome', controller.getUsuarioByNomeComponente)
 
 export default usuariosRoutes
