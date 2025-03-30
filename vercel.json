@@ -6,7 +6,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/.output/server/app.mjs"
+      "dest": "/.output/server/app.mjs"
     }
   ]
 }
