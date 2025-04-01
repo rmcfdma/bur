@@ -75,19 +75,18 @@ const login = async (formEl: FormInstance | undefined) => {
         if (valid) {
             try {
                 const resposta = await $usuarioService.authenticate(form.username, form.password)
-                // && resposta.refreshToken
-                if (resposta.accessToken) {
-                    // store.setTokensInPinia(resposta.accessToken, resposta.refreshToken)
+                // 
+                if (resposta.accessToken && resposta.refreshToken) {
+                    store.setTokensInPinia(resposta.accessToken, resposta.refreshToken)
                     setBreadcrumbs([['1', 'Home', '/', 'Seja Bem Vindo']]);
                     await router.push('/')//Redireciona para Home
                 } else {
-                    // store.clearTokensInPinia()
+                    store.clearTokensInPinia()
                     setBreadcrumbs([['8', 'login', '/login', 'Página de Login']]);
                     await router.push('/login')
                 }
                 ElMessage({ message: "Login efetuado com sucesso.", type: 'success' })
             } catch (error: any) {
-
                 if (error.response){
                     console.log(error.response.status)
                     if (error.response.status === 401) {

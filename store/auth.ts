@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-//import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 interface AuthState {
   accessToken: string | null;
@@ -18,13 +18,13 @@ export const authStore = defineStore('auth', {
     getAccessToken: (state) => state.accessToken,
     getRefreshToken: (state) => state.refreshToken,
     getUsuario: (state) => {
-      // if (state.accessToken) {
-      //   const objeto: any = jwt_decode(state.accessToken);
-      //   return objeto['0'];
-      // }
-      // else {
-      //   return null;
-      // }
+      if (state.accessToken) {
+        const objeto: any = jwtDecode(state.accessToken);
+        return objeto['0'];
+      }
+      else {
+        return null;
+      }
     },
   },
 
