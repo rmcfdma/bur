@@ -30,7 +30,6 @@ import type { FormInstance, FormRules, FormProps } from 'element-plus'
 import { ElAlert, ElMessage } from 'element-plus'
 import { authStore } from '@/store/auth';
 import { breadcrumbsStore } from '@/store/breadcrumbs';
-//import authenticate from '@/services/UsuarioService';
 
 const { $usuarioService } = useNuxtApp()
 const labelPosition = ref<FormProps['labelPosition']>('left')
@@ -101,7 +100,6 @@ const login = async (formEl: FormInstance | undefined) => {
         }    })
     loading.close()
 }
-
 </script>
 <style>
 .box-card {

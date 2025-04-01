@@ -63,7 +63,7 @@ const auth_store = authStore();
 const { setBreadcrumbs } = breadcrumbs_store;
 const activeIndex = ref('1');
 
-
+// Verifica se o usuário tem permissão para usar o recurso
 const $can = (action: string, subject: string) => {
     let pode = false;
     if (auth_store.getUsuario) {
