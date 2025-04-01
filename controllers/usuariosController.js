@@ -1,6 +1,6 @@
 import { PrismaClient } from '@prisma/client'
-//import { generateAccessToken, generateRefreshToken } from '../jwtUtils.js'
-//import jwt from 'jsonwebtoken'
+import { generateAccessToken, generateRefreshToken } from './jwtUtils.js'
+import jwt from 'jsonwebtoken'
 const prisma = new PrismaClient()
 
 // Listar todos os usuários
@@ -69,35 +69,35 @@ export const getUsuariosByPage = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-  // const { username, password } = req.body.data;
-  // try {
-  //   const usuario = await prisma.usuarios.findMany({
-  //     where: {
-  //       USERNAME: {
-  //         equals: username,
-  //       },
-  //       PASSWORD: {
-  //         equals: password,
-  //       },
-  //     },
-  //     ...comumSelect(),
-  //   });
-  //   if (usuario && usuario.length > 0) {
-  //     const novo = { ...usuario }
-  //     const accessToken = generateAccessToken(novo);
-  //     const refreshToken = generateRefreshToken(novo)
-  //     res.status(200).json({ accessToken: accessToken, refreshToken: refreshToken });
-  //   } else {
-  //     res.status(401).json({ message: 'Credenciais inválidas' });
-  //   }
-  // } catch (erro) {
-  //   // Erro de conexão com o banco de dados
-  //   if (erro.code === 'P1001') {
-  //     res.status(500).json({ message: 'Sem conexão com o banco de dados' });
-  //   }
-  // } finally {
-  //   await prisma.$disconnect();
-  // }
+  const { username, password } = req.body.data;
+  try {
+    const usuario = await prisma.usuarios.findMany({
+      where: {
+        USERNAME: {
+          equals: username,
+        },
+        PASSWORD: {
+          equals: password,
+        },
+      },
+      ...comumSelect(),
+    });
+    if (usuario && usuario.length > 0) {
+      const novo = { ...usuario }
+      const accessToken = generateAccessToken(novo);
+      const refreshToken = generateRefreshToken(novo)
+      res.status(200).json({ accessToken: accessToken, refreshToken: refreshToken });
+    } else {
+      res.status(401).json({ message: 'Credenciais inválidas' });
+    }
+  } catch (erro) {
+    // Erro de conexão com o banco de dados
+    if (erro.code === 'P1001') {
+      res.status(500).json({ message: 'Sem conexão com o banco de dados' });
+    }
+  } finally {
+    await prisma.$disconnect();
+  }
 };
 
 export const novo = async (req, res) => {
