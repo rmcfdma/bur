@@ -5,7 +5,7 @@
 // import UtilService from '@/services/UtilService'
 import UsuarioService from '@/services/UsuarioService'
 // import FileService from '@/services/FileService'
-// import AwsService from '@/services/AwsService'
+import AwsService from '@/services/AwsService'
 
 export default defineNuxtPlugin((nuxt) => {
   const api_base_url = nuxt.$config.public.API_BASE_URL
@@ -23,7 +23,7 @@ export default defineNuxtPlugin((nuxt) => {
       // funcaoService: new FuncaoService(api_base_url),
       usuarioService: new UsuarioService(api_base_url),
       // utilService: new UtilService(frontend_base_url),
-      // awsService: new AwsService(aws_region, access_key_id, secret_access_key),   
+      awsService: new AwsService(aws_region, access_key_id, secret_access_key),   
     },
   }
 })
